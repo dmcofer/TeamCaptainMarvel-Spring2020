@@ -1,0 +1,8 @@
+puzzleID~puzzleDescription~answerArray~hint~attempts~failMessage~successMessage;
+1~puzzleDescription~red,red,blue,green,yellow,green,orange~hint~5~fail~success;
+2~puzzleDescription~blue,blue,red,green,yellow,red,blue,green,blue,red,red~hint~5~fail~success;
+3~puzzleDescription~carrot,balloon,rabbit~hint~5~fail~success;
+4~puzzleDescription~scientist~hint~5~fail~success;
+5~puzzleDescription~44~hint~5~fail~success;
+6~puzzleDescription~5,4~hint~5~fail~success;
+7~puzzleDescription~bunny,multiply~hint~5~fail~success;

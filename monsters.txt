@@ -1,0 +1,9 @@
+monsterID~monsterDescription~health~chanceOfWinningArray~winningItemIDArray;
+killerBalloon1~Has combustible air inside of it and uses it to fly around with a lighter to light its trails on fire. It creates loops around the player or rabbit.~1~75,99~1;
+killerBalloon2~Has extreme air pressure inside of it and uses it to push the player or rabbit into obstacles to inflict damage. It also carries a bottle of fart gas to mix with his air to distract its opponents.~2~50,80,95~2,3;
+killerBalloon3~Is a balloon filled with water and can eject the water at lethal speeds.~3~25,50,90~4,5;
+killerBalloon4~Is the boss balloon who has normal helium air inside of it which gives it the ability to fly and carries around a nerf gun that has been modified to fire a mixture of fire balloons, water balloons, and extreme air pressure balloons that explode upon impact.~4~5,35,80~6,7;
+alienRabbit1~This is a normal looking rabbit that mutates into a slightly above human sized monster than has a screeching attack and multiple claw attacks~1~75,90,99~8,9;
+alienRabbit2~Is a scientist rabbit that uses multiple laser weaponry and usually devises traps for the player or balloons to run into during combat.~2~50,80,90~10,13;
+alienRabbit3~Is a superpowered rabbit that can move objects with their mind and has the ability to fly and shoot lasers out of their eyes.~3~25,50,90~11,12;
+alienRabbit4~The boss rabbit. He is simply a normal rabbit. No powers, no secret abilities. Just a normal rabbit.~999~0,100~14;

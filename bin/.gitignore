@@ -1,1 +1,9 @@
-/EmptyClass.class
+/Room.class
+/Item.class
+/Consumable.class
+/Equipable.class
+/Entity.class
+/Player.class
+/Monster.class
+/Map.class
+/Game.class

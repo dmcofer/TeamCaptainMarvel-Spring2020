@@ -21,6 +21,22 @@ public class Player extends Entity {
 		this.inventory = inventory;
 	}
 	
+	//method to print out players inventory
+	public void inventory()
+	{
+		if(!this.getInventory().isEmpty())
+		{
+			System.out.println("These are the items in your inventory ->");
+			for(int i = 0; i < this.getInventory().size(); i++)
+			{
+				System.out.println(this.getInventory().get(i).getItemName());
+			}
+		}
+		else
+		{
+			System.out.println("You do not have any items in your inventory.");
+		}
+	}
 	
 
 }

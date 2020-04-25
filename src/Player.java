@@ -38,6 +38,33 @@ public class Player extends Entity {
 		}
 	}
 	
+	//method to see if item is in player's inventory
+		public boolean itemAvailable(String itemName) {
+
+			boolean itemAvailable = false;
+
+			if(this.getInventory().isEmpty())
+			{
+				itemAvailable = false;
+			}
+			else if (this.getInventory().size() > 0)
+			{
+				for(int i = 0; i < this.getInventory().size(); i++)
+				{
+					if(itemName.equalsIgnoreCase(this.getInventory().get(i).getItemName()))
+					{
+						itemAvailable = true;
+						break;
+					}
+					else
+					{
+						itemAvailable = false;
+					}
+				}
+			}
+			return itemAvailable;
+		}
+	
 	//method to display item description if the examine item command is used and the item is in the player's inventory
 		public void examine(String itemName) {
 			String itemDescription = "";

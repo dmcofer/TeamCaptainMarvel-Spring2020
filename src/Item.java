@@ -1,17 +1,18 @@
+import java.util.ArrayList;
 
 public class Item {
-	
+
 	//instance variables
 	private String itemName;
 	private String itemDescription;
-	
+
 	//constructor
 	public Item(String itemName, String itemDescription) {
-		
+
 		this.itemName = itemName;
 		this.itemDescription = itemDescription;
 	}
-	
+
 	//getter and setter methods
 	public String getItemName() {
 		return itemName;
@@ -28,8 +29,5 @@ public class Item {
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
-	
-
-	
 
 }

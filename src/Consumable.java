@@ -5,9 +5,9 @@ public class Consumable extends Item {
 	private int healthIncrease;
 
 	//Constructor
-	public Consumable(String itemName, String itemDescription, int healthIncrease) {
+	public Consumable(int itemID, String itemName, String itemDescription, int healthIncrease) {
 		
-		super(itemName, itemDescription);
+		super(itemID, itemName, itemDescription);
 		this.healthIncrease = healthIncrease;
 	}
 

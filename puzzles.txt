@@ -1,8 +1,8 @@
-puzzleID~puzzleDescription~answerArray~hint~attempts~failMessage~successMessage;
-1~puzzleDescription~red,red,blue,green,yellow,green,orange~hint~5~fail~success;
-2~puzzleDescription~blue,blue,red,green,yellow,red,blue,green,blue,red,red~hint~5~fail~success;
-3~puzzleDescription~carrot,balloon,rabbit~hint~5~fail~success;
-4~puzzleDescription~scientist~hint~5~fail~success;
-5~puzzleDescription~44~hint~5~fail~success;
-6~puzzleDescription~5,4~hint~5~fail~success;
-7~puzzleDescription~bunny,multiply~hint~5~fail~success;
+puzzleID~puzzleDescription~answerArray~hint~attempts~failMessage~successMessage~roomLocation
+1~puzzleDescription~red,red,blue,green,yellow,green,orange~*You hear a dark soothing demonic voice*“Memorize the colors you see and type each color, in the order presented, and press enter"~5~Incorrect! You have failed to solve the puzzle~Correct! You have solved the puzzle~13
+2~puzzleDescription~blue,blue,red,green,yellow,red,blue,green,blue,red,red~*You hear a dark soothing demonic voice*“Memorize the colors you see and type each color, in the order presented, and press enter"~5~Incorrect! You have failed to solve the puzzle~Correct! You have solved the puzzle~19
+3~puzzleDescription~carrot,balloon,rabbit~*You hear a dark soothing demonic voice*“carefully look at each word and piece together the words. The words are related to the enemies” ~5~Incorrect! You have failed to solve the puzzle~Correct! You have solved the puzzle~1
+4~puzzleDescription~scientist~*You hear a dark soothing demonic voice*“carefully look at each word and piece together the words. The words are related to the enemies”~5~Incorrect! You have failed to solve the puzzle~Correct! You have solved the puzzle~10
+5~puzzleDescription~44~*You hear a dark soothing demonic voice*“carefully look at the word problem and use your math skills to pass”~5~Incorrect! You have failed to solve the puzzle~Correct! You have solved the puzzle~18
+6~puzzleDescription~5,4~*You hear a dark soothing demonic voice*“carefully look at the word problem and use your math skills to pass”~5~Incorrect! You have failed to solve the puzzle~Correct! You have solved the puzzle~26
+7~puzzleDescription~bunny,multiply~*You hear a dark soothing demonic voice*“Think hard but not too hard to solve these tricky riddles”~5~Incorrect! You have failed to solve the puzzle~Correct! You have solved the puzzle~22

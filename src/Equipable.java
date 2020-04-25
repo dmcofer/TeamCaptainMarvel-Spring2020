@@ -2,24 +2,32 @@
 public class Equipable extends Item {
 	
 	//instance variables
-	private int attackIncrease;
+	private String pickupMessage;
+	private String useMessage;
 
 	//Constructor
-	public Equipable(String itemName, String itemDescription, int attackIncrease) {
+	public Equipable(int itemID, String itemName, String itemDescription, String pickupMessage, String useMessage) {
 		
-		super(itemName, itemDescription);
-		this.attackIncrease = attackIncrease;
+		super(itemID, itemName, itemDescription);
+		this.pickupMessage = pickupMessage;
 	}
 
 	//getter and setter methods
-	public int getAttackIncrease() {
-		return attackIncrease;
+	
+	public String getPickupMessage() {
+		return pickupMessage;
 	}
 
-	public void setAttackIncrease(int attackIncrease) {
-		this.attackIncrease = attackIncrease;
+	public void setPickupMessage(String pickupMessage) {
+		this.pickupMessage = pickupMessage;
 	}
-	
-	
+
+	public String getUseMessage() {
+		return useMessage;
+	}
+
+	public void setUseMessage(String useMessage) {
+		this.useMessage = useMessage;
+	}
 
 }

@@ -7,16 +7,20 @@ public class Puzzle {
 	private String answer;
 	private String hint;
 	private int attempts;
+	private String failMessage;
+	private String successMessage;
 	private int currentRoomID;
 	
 	//Constructor
-	public Puzzle(int puzzleID, String puzzleDescription, String answer, String hint, int attempts, int currentRoomID) {
+	public Puzzle(int puzzleID, String puzzleDescription, String answer, String hint, int attempts, String failMessage, String successMessage, int currentRoomID) {
 	
 		this.puzzleID = puzzleID;
 		this.puzzleDescription = puzzleDescription;
 		this.answer = answer;
 		this.hint = hint;
 		this.attempts = attempts;
+		this.failMessage = failMessage;
+		this.successMessage = successMessage;
 		this.currentRoomID = currentRoomID;
 	}
 
@@ -59,6 +63,22 @@ public class Puzzle {
 
 	public void setAttempts(int attempts) {
 		this.attempts = attempts;
+	}
+	
+	public String getFailMessage() {
+		return failMessage;
+	}
+
+	public void setFailMessage(String failMessage) {
+		this.failMessage = failMessage;
+	}
+
+	public String getSuccessMessage() {
+		return successMessage;
+	}
+
+	public void setSuccessMessage(String successMessage) {
+		this.successMessage = successMessage;
 	}
 
 	public int getCurrentRoomID() {

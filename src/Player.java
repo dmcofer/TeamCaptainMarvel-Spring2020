@@ -4,12 +4,16 @@ public class Player extends Entity {
 
 	//instance variables
 	private ArrayList<Item> inventory;
+	private ArrayList<Item> usedItems; //items used by player, checked for monster fights
+	private int currentRoomID;
 
 	//constructors
-	public Player(String entityName, int health, int attack, int currentRoomId, ArrayList<Item> inventory) {
+	public Player(String entityName, int health, int currentRoomID, ArrayList<Item> inventory, ArrayList<Item> usedItems) {
 
-		super(entityName, health, attack, currentRoomId);
+		super(entityName, health);
+		this.currentRoomID = currentRoomID;
 		this.inventory = inventory;
+		this.usedItems = usedItems;
 	}
 
 	//getters and setters
@@ -19,6 +23,14 @@ public class Player extends Entity {
 
 	public void setInventory(ArrayList<Item> inventory) {
 		this.inventory = inventory;
+	}
+	
+	public int getCurrentRoomID() {
+		return currentRoomID;
+	}
+
+	public void setCurrentRoomID(int currentRoomID) {
+		this.currentRoomID = currentRoomID;
 	}
 
 	//method to print out players inventory

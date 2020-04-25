@@ -1,0 +1,16 @@
+itemType~itemID~itemName~itemDescription~pickupMessage~useMessage
+equip~1~Water Gun~Put out fires~A water gun! Maybe this will help me put out its fires.~Now I can defeat this killer balloon!
+equip~2~Gas Mask~Protect from fart gas~A gas mask! Maybe this will help protect me from its toxic gas.~Now I am protected.
+equip~3~Umbrella Shield~Protect from air pressure/wind~An umbrella shield! Maybe this will help keep my position stable.~Now the killer balloon won't be able to move me!
+equip~4~Waterproof Shield~Protect from water~A waterproof shield! Maybe this will help keep my position stable.~Now the killer balloon won't be able to move me!
+equip~5~Fan~Fan away smoke~A fan! Maybe this will blow away all of the smoke.~I was blind, but now I can see!
+equip~6~Long Range Dart Gun~Dart hits balloon to make it sink~A long-range dart gun! Maybe this will prevent the boss from flying.~Now I can bring the boss back down to size!
+equip~7~Fireproof Shield~Protect from fire~A fireproof shield! Maybe this will protect me from getting burned.~Now the killer balloon won't be able to burn me!
+equip~8~Growth Serum~Increases the player's size to be proportionate to a regular rabbit~A growth serum! Hopefully this will make me larger than the alien rabbit.~Now the alien rabbit will be easier to defeat!
+equip~9~Noise Free Headphones~Cancel out noises~A pair of noise free headphones! Hopefully this will protect me from the alien rabbit's screams.~Now I am protected against the alien rabbit's deafening screams!
+equip~10~Heightened Senses Potion~Allows player to be able to easily spot traps~A heightened senses potion! Hopefully this will be able to easily find the traps.~Now I should be able to find the traps!
+equip~11~Laserproof Shield~A shield that blocks laser~A laserproof shield! Maybe this will protect me from getting zapped.~Now the alien rabbit won't be able to hit me!
+equip~12~Immobilizing Ray Gun~A ray gun that has a chance of immobilizing the target~A immobilizing ray gun! Maybe this stop the rabbit from moving.~Now the alien rabbit won't be able to move!
+equip~13~Rabbit Trap~A trap that prevents a rabbit from moving~A rabbit trap! Maybe this will keep the rabbit from moving.~Now the rabbit won't be able to move!
+equip~14~Cage~A cage intended to trap a rabbit~A cage! Maybe this will keep the rabbit in place.~Now I can trap the rabbit!
+consume~15~General Health Potion~A potion designed to restore one of your valuable hearts~no unique pickupMessage~no unique useMessage

@@ -6,27 +6,27 @@ public class Room {
 	private int roomID;
 	private String roomName;
 	private String roomDescription;
-	private ArrayList<Integer> connections;
+	private String inspectMessage;
+	private int[] connections;//0 = north, 1 = east, 2 = south, 3 = west
 	private ArrayList<Item> itemInventory;
+	private ArrayList<Monster> monsters;
 	private boolean visited;
 	private boolean hasItem;
-	private boolean hasPuzzle;
-	private boolean hasMonster;
+	private Puzzle puzzle;
 
 	//Constructor
-	public Room(int roomID, String roomName, String roomDescription, ArrayList<Integer> connections,
-			ArrayList<Item> itemInventory, boolean visited, boolean hasItem, boolean hasPuzzle,
-			boolean hasMonster) {
+	public Room(int roomID, String roomName, String roomDescription, String inspectMessage, int[] connections,
+			ArrayList<Item> itemInventory, ArrayList<Monster> monsters, boolean visited) {
 
 		this.roomID = roomID;
 		this.roomName = roomName;
 		this.roomDescription = roomDescription;
+		this.inspectMessage = inspectMessage;
 		this.connections = connections;
 		this.itemInventory = itemInventory;
+		this.monsters = monsters;
 		this.visited = visited;
-		this.hasItem = hasItem;
-		this.hasPuzzle = hasPuzzle;
-		this.hasMonster = hasMonster;
+		this.hasItem = !itemInventory.isEmpty();
 	}
 
 	public int getRoomID() {
@@ -52,12 +52,20 @@ public class Room {
 	public void setRoomDescription(String roomDescription) {
 		this.roomDescription = roomDescription;
 	}
+	
+	public String getInspectMessage() {
+		return inspectMessage;
+	}
 
-	public ArrayList<Integer> getConnections() {
+	public void setInspectMessage(String inspectMessage) {
+		this.inspectMessage = inspectMessage;
+	}
+
+	public int[] getConnections() {
 		return connections;
 	}
 
-	public void setConnections(ArrayList<Integer> connections) {
+	public void setConnections(int[] connections) {
 		this.connections = connections;
 	}
 
@@ -68,6 +76,14 @@ public class Room {
 	public void setItemInventory(ArrayList<Item> itemInventory) {
 		this.itemInventory = itemInventory;
 	}
+	
+	public ArrayList<Monster> getMonsters() {
+		return monsters;
+	}
+
+	public void setMonsters(ArrayList<Monster> monsters) {
+		this.monsters = monsters;
+	}
 
 	public boolean isVisited() {
 		return visited;
@@ -76,7 +92,7 @@ public class Room {
 	public void setVisited(boolean visited) {
 		this.visited = visited;
 	}
-
+	
 	public boolean isHasItem() {
 		return hasItem;
 	}
@@ -84,21 +100,13 @@ public class Room {
 	public void setHasItem(boolean hasItem) {
 		this.hasItem = hasItem;
 	}
-
-	public boolean isHasPuzzle() {
-		return hasPuzzle;
+	
+	public Puzzle getPuzzle() {
+		return puzzle;
 	}
 
-	public void setHasPuzzle(boolean hasPuzzle) {
-		this.hasPuzzle = hasPuzzle;
-	}
-
-	public boolean isHasMonster() {
-		return hasMonster;
-	}
-
-	public void setHasMonster(boolean hasMonster) {
-		this.hasMonster = hasMonster;
+	public void setPuzzle(Puzzle puzzle) {
+		this.puzzle = puzzle;
 	}
 
 	//method to see if item is in player's inventory

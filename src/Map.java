@@ -266,8 +266,11 @@ public class Map implements Serializable {
 		boolean puzzleConnection = Boolean.parseBoolean(endingInfo[4]);
 		boolean multipleEnds = Boolean.parseBoolean(endingInfo[5]);
 		boolean monsterConnection = Boolean.parseBoolean(endingInfo[6]);
+		int roomID = Integer.parseInt(endingInfo[7]);
 		
 		Ending e = new Ending(endingID, endingDescription, endingPrompt, endingCommand, puzzleConnection, multipleEnds, monsterConnection);
+		Room room = searchRoomByID(roomID);
+		room.setEnding(e);
 	}
 
 	private Room searchRoomByID(int roomID) {

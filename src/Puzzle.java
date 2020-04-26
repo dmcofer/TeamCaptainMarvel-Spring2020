@@ -33,9 +33,10 @@ public class Puzzle implements Serializable{
 		
 		System.out.println();
 		System.out.println(puzzleDescription);
+		int i = 0;
 		
 		//guess until win/lose
-		while (attempts > 0 && !isSolved ) {
+		while (attempts > 0 && !isSolved) {
 			String guess = kb.nextLine();
 			
 			//player enters correct answer

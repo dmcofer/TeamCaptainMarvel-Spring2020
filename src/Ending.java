@@ -1,19 +1,28 @@
+import java.io.Serializable;
 
-public class Ending {
+public class Ending implements Serializable {
 	
 	//instance variables
 	private int endingID;
-	private String endingName;
 	private String endingDescription;
+	private String endingPrompt;
+	private String endingCommand;
+	private boolean isConnectedToPuzzle;
+	private boolean hasMultipleOutcomes;
+	private boolean isConnectedToMonsters;
 	private int currentRoomID;
 	
 	//Constructor
-	public Ending(int endingID, String endingName, String endingDescription, int currentRoomID) {
+	public Ending(int endingID, String endingDescription, String endingPrompt, String endingCommand, boolean isConnectedToPuzzle,
+					boolean hasMultipleOutcomes, boolean isConnectedToMonsters) {
 		
 		this.endingID = endingID;
-		this.endingName = endingName;
 		this.endingDescription = endingDescription;
-		this.currentRoomID = currentRoomID;
+		this.endingPrompt = endingPrompt;
+		this.endingCommand = endingCommand;
+		this.isConnectedToPuzzle = isConnectedToPuzzle;
+		this.hasMultipleOutcomes = hasMultipleOutcomes;
+		this.isConnectedToMonsters = isConnectedToMonsters;
 	}
 
 	//getter and setter methods
@@ -25,14 +34,6 @@ public class Ending {
 		this.endingID = endingID;
 	}
 
-	public String getEndingName() {
-		return endingName;
-	}
-
-	public void setEndingName(String endingName) {
-		this.endingName = endingName;
-	}
-
 	public String getEndingDescription() {
 		return endingDescription;
 	}
@@ -41,6 +42,46 @@ public class Ending {
 		this.endingDescription = endingDescription;
 	}
 	
+	public String getEndingPrompt() {
+		return endingPrompt;
+	}
+
+	public void setEndingPrompt(String endingPrompt) {
+		this.endingPrompt = endingPrompt;
+	}
+
+	public String getEndingCommand() {
+		return endingCommand;
+	}
+
+	public void setEndingCommand(String endingCommand) {
+		this.endingCommand = endingCommand;
+	}
+
+	public boolean isConnectedToPuzzle() {
+		return isConnectedToPuzzle;
+	}
+
+	public void setConnectedToPuzzle(boolean isConnectedToPuzzle) {
+		this.isConnectedToPuzzle = isConnectedToPuzzle;
+	}
+
+	public boolean isHasMultipleOutcomes() {
+		return hasMultipleOutcomes;
+	}
+
+	public void setHasMultipleOutcomes(boolean hasMultipleOutcomes) {
+		this.hasMultipleOutcomes = hasMultipleOutcomes;
+	}
+
+	public boolean isConnectedToMonsters() {
+		return isConnectedToMonsters;
+	}
+
+	public void setConnectedToMonsters(boolean isConnectedToMonsters) {
+		this.isConnectedToMonsters = isConnectedToMonsters;
+	}
+
 	public int getCurrentRoomID() {
 		return currentRoomID;
 	}

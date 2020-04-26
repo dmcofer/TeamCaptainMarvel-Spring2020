@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Puzzle {
+public class Puzzle implements Serializable{
 
 	//instance variables
 	private int puzzleID;

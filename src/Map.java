@@ -1,10 +1,16 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Map {
+public class Map implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//instance variables
 	private Player player;
 	private File roomsFile;
@@ -63,6 +69,30 @@ public class Map {
 
 	public void setMonstersFile(File monstersFile) {
 		this.monstersFile = monstersFile;
+	}
+	
+	public ArrayList<Room> getRoomList() {
+		return roomList;
+	}
+
+	public void setRoomList(ArrayList<Room> roomList) {
+		this.roomList = roomList;
+	}
+
+	public ArrayList<Item> getAvailableItems() {
+		return availableItems;
+	}
+
+	public void setAvailableItems(ArrayList<Item> availableItems) {
+		this.availableItems = availableItems;
+	}
+
+	public ArrayList<Monster> getAvailableMonsters() {
+		return availableMonsters;
+	}
+
+	public void setAvailableMonsters(ArrayList<Monster> availableMonsters) {
+		this.availableMonsters = availableMonsters;
 	}
 
 	public void createGame() {
@@ -355,6 +385,14 @@ public class Map {
 				else
 				{
 					System.out.println(input + " is not in your inventory!");
+				}
+			}
+			else if(command.equalsIgnoreCase("save") && input.equalsIgnoreCase("game"))
+			{
+				try {
+					Game.saveGame();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 			}
 			else

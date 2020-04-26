@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Entity {
+public class Entity implements Serializable{
 	
 	//instance variables
 	private String entityName;

@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Consumable extends Item {
+public class Consumable extends Item implements Serializable {
 	
 	//instance variables
 	private int healthIncrease;

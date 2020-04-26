@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Player extends Entity {
+public class Player extends Entity implements Serializable{
 
 	//instance variables
 	private ArrayList<Item> inventory;

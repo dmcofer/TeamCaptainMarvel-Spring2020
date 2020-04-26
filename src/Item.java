@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Item {
+public class Item implements Serializable {
 
 	//instance variables
 	private int itemID;

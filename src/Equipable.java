@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Equipable extends Item {
+public class Equipable extends Item implements Serializable {
 	
 	//instance variables
 	private String pickupMessage;

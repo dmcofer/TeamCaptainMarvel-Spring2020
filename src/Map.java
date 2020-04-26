@@ -70,6 +70,30 @@ public class Map implements Serializable {
 	public void setMonstersFile(File monstersFile) {
 		this.monstersFile = monstersFile;
 	}
+	
+	public ArrayList<Room> getRoomList() {
+		return roomList;
+	}
+
+	public void setRoomList(ArrayList<Room> roomList) {
+		this.roomList = roomList;
+	}
+
+	public ArrayList<Item> getAvailableItems() {
+		return availableItems;
+	}
+
+	public void setAvailableItems(ArrayList<Item> availableItems) {
+		this.availableItems = availableItems;
+	}
+
+	public ArrayList<Monster> getAvailableMonsters() {
+		return availableMonsters;
+	}
+
+	public void setAvailableMonsters(ArrayList<Monster> availableMonsters) {
+		this.availableMonsters = availableMonsters;
+	}
 
 	public ArrayList<Room> getRoomList() {
 		return roomList;
@@ -399,6 +423,14 @@ public class Map implements Serializable {
 				{
 					System.out.println(input + " is not in your inventory!");
 					play();
+				}
+			}
+			else if(command.equalsIgnoreCase("save") && input.equalsIgnoreCase("game"))
+			{
+				try {
+					Game.saveGame();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 			}
 			else if(command.equalsIgnoreCase("save") && input.equalsIgnoreCase("game"))

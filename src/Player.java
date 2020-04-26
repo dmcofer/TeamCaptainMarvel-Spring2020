@@ -93,7 +93,7 @@ public class Player extends Entity {
 	}
 
 	//method to display item description if the examine item command is used and the item is in the player's inventory
-	public void examine(String itemName) {
+	public void inspect(String itemName) {
 		String itemDescription = "";
 
 		for(int i = 0; i < this.getInventory().size(); i++)

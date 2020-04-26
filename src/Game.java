@@ -19,6 +19,7 @@ public class Game {
 		File puzzlesFile = new File("puzzles.txt");
 		File monstersFile = new File("monsters.txt");
 		File roomsFile = new File("rooms.txt");
+		File endingsFile = new File("endings.txt");
 		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Start New Game or Load Game");
@@ -30,7 +31,7 @@ public class Game {
 			
 			Player player = new Player(name, 3, 1, new ArrayList<Item>(), new ArrayList<Item>());
 			
-			map = new Map(player, roomsFile, itemsFile, puzzlesFile, monstersFile);
+			map = new Map(player, roomsFile, itemsFile, puzzlesFile, monstersFile, endingsFile);
 			
 			map.createGame();
 			System.out.println("Hello " + player.getEntityName());

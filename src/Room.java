@@ -14,6 +14,7 @@ public class Room implements Serializable{
 	private boolean visited;
 	private boolean hasItem;
 	private Puzzle puzzle;
+	private Ending ending;
 
 	//Constructor
 	public Room(int roomID, String roomName, String[] roomDescription, String inspectMessage, int[] connections,
@@ -108,6 +109,14 @@ public class Room implements Serializable{
 
 	public void setPuzzle(Puzzle puzzle) {
 		this.puzzle = puzzle;
+	}
+	
+	public Ending getEnding() {
+		return ending;
+	}
+
+	public void setEnding(Ending ending) {
+		this.ending = ending;
 	}
 
 	//method to see if item is in player's inventory

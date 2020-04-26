@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Puzzle implements Serializable{
 
@@ -11,9 +12,11 @@ public class Puzzle implements Serializable{
 	private String failMessage;
 	private String successMessage;
 	private int currentRoomID;
+	private boolean isSolved;
 	
 	//Constructor
-	public Puzzle(int puzzleID, String[] puzzleDescription, String[] answer, String hint, int attempts, String failMessage, String successMessage, int currentRoomID) {
+	public Puzzle(int puzzleID, String[] puzzleDescription, String[] answer, String hint, int attempts,
+			String failMessage, String successMessage, int currentRoomID, boolean isSolved) {
 	
 		this.puzzleID = puzzleID;
 		this.puzzleDescription = puzzleDescription;
@@ -23,6 +26,36 @@ public class Puzzle implements Serializable{
 		this.failMessage = failMessage;
 		this.successMessage = successMessage;
 		this.currentRoomID = currentRoomID;
+		this.isSolved = isSolved;
+	}
+	
+	public void solve(Scanner kb) {
+		
+		System.out.println();
+		System.out.println(puzzleDescription);
+		
+		//guess until win/lose
+		while (attempts > 0 && !isSolved ) {
+			String guess = kb.nextLine();
+			
+			//player enters correct answer
+			if (guess.equalsIgnoreCase(answer[i])) {
+				System.out.println("Correct!");
+				isSolved = true;
+			}
+			
+			//incorrect answers decrease the amount of attempts
+			else {
+				attempts--;
+				System.out.println("The answer you provided is wrong, you still have " + attempts + " attempt(s) left.");
+			}
+		}
+		
+		//if the player runs out of attempts and did not get the correct answer
+		if (attempts == 0 && !isSolved) {
+			System.out.println("Failed to solve");
+			System.out.println("The correct answer is " + answer);
+		}
 	}
 
 	//getter and setter methods
@@ -88,6 +121,14 @@ public class Puzzle implements Serializable{
 
 	public void setCurrentRoomID(int currentRoomID) {
 		this.currentRoomID = currentRoomID;
+	}
+	
+	public boolean isSolved() {
+		return isSolved;
+	}
+	
+	public void setSolved(boolean isSolved) {
+		this.isSolved = isSolved;
 	}
 	
 

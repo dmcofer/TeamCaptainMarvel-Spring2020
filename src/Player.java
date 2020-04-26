@@ -25,7 +25,7 @@ public class Player extends Entity implements Serializable{
 	public void setInventory(ArrayList<Item> inventory) {
 		this.inventory = inventory;
 	}
-	
+
 	public int getCurrentRoomID() {
 		return currentRoomID;
 	}
@@ -77,7 +77,7 @@ public class Player extends Entity implements Serializable{
 		}
 		return itemAvailable;
 	}
-	
+
 	//method to search if there are any items in room
 	public void search(Room room)
 	{
@@ -97,7 +97,7 @@ public class Player extends Entity implements Serializable{
 	//method to display item description if the examine item command is used and the item is in the player's inventory
 	public void inspect(String itemName, Room room) {
 		String itemDescription = "";
-		
+
 		if(!this.itemAvailable(itemName) && !room.itemAvailable(itemName))
 		{
 			itemDescription = itemName + " is not available for examination";
@@ -151,8 +151,18 @@ public class Player extends Entity implements Serializable{
 					{
 						room.setHasItem(false);
 					}
-					itemPickedUpMessage = itemName + " has been picked up from the room and successfully added to " +
-					this.getEntityName() + "'s inventory.";
+					if(item instanceof Equipable)
+					{
+						
+						itemPickedUpMessage = ((Equipable) item).getPickupMessage();
+
+					}
+					else
+					{
+						itemPickedUpMessage = itemName + " has been picked up from the room and successfully added to " +
+								this.getEntityName() + "'s inventory.";
+						
+					}
 					break;
 				}
 			}
@@ -193,7 +203,7 @@ public class Player extends Entity implements Serializable{
 		}
 		System.out.println(itemDroppedMessage);
 	}
-	
+
 	public void useItem(String itemName) {
 		String useItemMessage = "";
 
@@ -219,7 +229,7 @@ public class Player extends Entity implements Serializable{
 						}
 						else
 						{
-						useItemMessage = usedItem.getUseMessage();
+							useItemMessage = usedItem.getUseMessage();
 						}
 					}
 				}
@@ -235,11 +245,11 @@ public class Player extends Entity implements Serializable{
 		}
 		System.out.println(useItemMessage);
 	}
-	
+
 	//method to search item by name and return item from inventory
 	private Item searchItemByName(String itemName) {
 		Item item = null;
-		
+
 		for(int i = 0; i < inventory.size(); i++)
 		{
 			if(inventory.get(i).getItemName().equalsIgnoreCase(itemName))
@@ -247,15 +257,15 @@ public class Player extends Entity implements Serializable{
 				item = inventory.get(i);
 			}
 		}
-		
+
 		return item;
 	}
-	
+
 	public void consumeItem(String itemName) {
 		if(itemAvailable(itemName))
 		{
 			Item item = searchItemByName(itemName);
-			
+
 			if(item instanceof Consumable)
 			{
 				int health = this.getHealth() + ((Consumable) item).getHealthIncrease();

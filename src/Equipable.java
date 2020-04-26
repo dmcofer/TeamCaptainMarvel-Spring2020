@@ -11,6 +11,7 @@ public class Equipable extends Item implements Serializable {
 		
 		super(itemID, itemName, itemDescription);
 		this.pickupMessage = pickupMessage;
+		this.useMessage = useMessage;
 	}
 
 	//getter and setter methods

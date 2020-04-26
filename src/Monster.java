@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Monster extends Entity {
+public class Monster extends Entity implements Serializable {
 	
 	//instance variablesString monsterDescription
 	private int monsterID;

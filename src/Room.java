@@ -1,11 +1,12 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Room {
+public class Room implements Serializable{
 
 	//instance variables
 	private int roomID;
 	private String roomName;
-	private String roomDescription;
+	private String[] roomDescription;
 	private String inspectMessage;
 	private int[] connections;//0 = north, 1 = east, 2 = south, 3 = west
 	private ArrayList<Item> itemInventory;
@@ -15,7 +16,7 @@ public class Room {
 	private Puzzle puzzle;
 
 	//Constructor
-	public Room(int roomID, String roomName, String roomDescription, String inspectMessage, int[] connections,
+	public Room(int roomID, String roomName, String[] roomDescription, String inspectMessage, int[] connections,
 			ArrayList<Item> itemInventory, ArrayList<Monster> monsters, boolean visited) {
 
 		this.roomID = roomID;
@@ -45,11 +46,11 @@ public class Room {
 		this.roomName = roomName;
 	}
 
-	public String getRoomDescription() {
+	public String[] getRoomDescription() {
 		return roomDescription;
 	}
 
-	public void setRoomDescription(String roomDescription) {
+	public void setRoomDescription(String[] roomDescription) {
 		this.roomDescription = roomDescription;
 	}
 	

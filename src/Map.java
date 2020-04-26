@@ -1,10 +1,16 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Map {
+public class Map implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//instance variables
 	private Player player;
 	private File roomsFile;
@@ -63,6 +69,30 @@ public class Map {
 
 	public void setMonstersFile(File monstersFile) {
 		this.monstersFile = monstersFile;
+	}
+
+	public ArrayList<Room> getRoomList() {
+		return roomList;
+	}
+
+	public void setRoomList(ArrayList<Room> roomList) {
+		this.roomList = roomList;
+	}
+
+	public ArrayList<Item> getAvailableItems() {
+		return availableItems;
+	}
+
+	public void setAvailableItems(ArrayList<Item> availableItems) {
+		this.availableItems = availableItems;
+	}
+
+	public ArrayList<Monster> getAvailableMonsters() {
+		return availableMonsters;
+	}
+
+	public void setAvailableMonsters(ArrayList<Monster> availableMonsters) {
+		this.availableMonsters = availableMonsters;
 	}
 
 	public void createGame() {
@@ -161,7 +191,7 @@ public class Map {
 
 		int roomID = Integer.parseInt(roomInfo[0]);
 		String roomName = roomInfo[1];
-		String roomDescription = roomInfo[2];
+		String[] roomDescription = roomInfo[2].split("#");
 		String inspectMessage = roomInfo[3];
 
 		String[] roomConnections = roomInfo[4].split(",");
@@ -201,15 +231,15 @@ public class Map {
 		String[] puzzleInfo = puzzleString.split("~");
 
 		int puzzleID = Integer.parseInt(puzzleInfo[0]);
-		String puzzleDescription = puzzleInfo[1];
-		String answer = puzzleInfo[2];
+		String[] puzzleDescription = puzzleInfo[1].split("#");
+		String[] answer = puzzleInfo[2].split(",");
 		String hint = puzzleInfo[3];
 		int attempts = Integer.parseInt(puzzleInfo[4]);
 		String fail = puzzleInfo[5];
 		String success = puzzleInfo[6];
 		int location = Integer.parseInt(puzzleInfo[7]);
 
-		Puzzle puzzle = new Puzzle(puzzleID, puzzleDescription, answer, hint, attempts, fail, success, location);
+		Puzzle puzzle = new Puzzle(puzzleID, puzzleDescription, answer, hint, attempts, fail, success, location, false);
 
 		Room room = searchRoomByID(location);
 		room.setPuzzle(puzzle);
@@ -303,7 +333,11 @@ public class Map {
 		else
 		{
 			System.out.println(player.getEntityName() + " is in the " + room.getRoomName() + " room.");
-			System.out.println(room.getRoomDescription());
+			System.out.println();
+			String[] description = room.getRoomDescription();
+			for (String s: description) {
+				System.out.println(s);
+			}
 			System.out.println("Movement: north, east, south, west (shorthand: n, e, s, w)");
 			System.out.println("What would you like to do?");
 		}
@@ -336,6 +370,19 @@ public class Map {
 				player.search(room);
 				play();
 			}
+			else if(command.equalsIgnoreCase("pickup"))
+			{
+				if(room.getItemInventory().isEmpty())
+				{
+					System.out.println("This room does not have any items!");
+					play();
+				}
+				else
+				{
+					player.pickupItem(input, room);
+					play();
+				}
+			}
 			else if(command.equalsIgnoreCase("consume"))
 			{
 				if(player.getInventory().isEmpty())
@@ -351,6 +398,15 @@ public class Map {
 				else
 				{
 					System.out.println(input + " is not in your inventory!");
+					play();
+				}
+			}
+			else if(command.equalsIgnoreCase("save") && input.equalsIgnoreCase("game"))
+			{
+				try {
+					Game.saveGame();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 			}
 			else
@@ -367,7 +423,20 @@ public class Map {
 				input = input + " " + consoleText[i];
 			}
 			
-			if(command.equalsIgnoreCase("consume"))
+			if(command.equalsIgnoreCase("pickup"))
+			{
+				if(room.getItemInventory().isEmpty())
+				{
+					System.out.println("This room does not have any items!");
+					play();
+				}
+				else
+				{
+					player.pickupItem(input, room);
+					play();
+				}
+			}
+			else if(command.equalsIgnoreCase("consume"))
 			{
 				if(player.getInventory().isEmpty())
 				{

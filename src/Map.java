@@ -161,7 +161,7 @@ public class Map {
 
 		int roomID = Integer.parseInt(roomInfo[0]);
 		String roomName = roomInfo[1];
-		String roomDescription = roomInfo[2];
+		String[] roomDescription = roomInfo[2].split("#");
 		String inspectMessage = roomInfo[3];
 
 		String[] roomConnections = roomInfo[4].split(",");
@@ -303,7 +303,11 @@ public class Map {
 		else
 		{
 			System.out.println(player.getEntityName() + " is in the " + room.getRoomName() + " room.");
-			System.out.println(room.getRoomDescription());
+			System.out.println();
+			String[] description = room.getRoomDescription();
+			for (String s: description) {
+				System.out.println(s);
+			}
 			System.out.println("Movement: north, east, south, west (shorthand: n, e, s, w)");
 			System.out.println("What would you like to do?");
 		}

@@ -455,6 +455,11 @@ public class Map implements Serializable {
 					play();
 				}
 			}
+			else if(command.equalsIgnoreCase("use"))
+			{
+				player.useItem(input);
+				play();
+			}
 			else if(command.equalsIgnoreCase("save") && input.equalsIgnoreCase("game"))
 			{
 				try {
@@ -541,6 +546,11 @@ public class Map implements Serializable {
 					System.out.println(input + " is not in your inventory!");
 					play();
 				}
+			}
+			else if(command.equalsIgnoreCase("use"))
+			{
+				player.useItem(input);
+				play();
 			}
 			else
 			{

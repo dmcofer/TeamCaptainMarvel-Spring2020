@@ -78,6 +78,7 @@ public class Player extends Entity implements Serializable{
 		return itemAvailable;
 	}
 	
+	//method to search if there are any items in room
 	public void search(Room room)
 	{
 		if(room.getItemInventory().isEmpty())
@@ -193,6 +194,49 @@ public class Player extends Entity implements Serializable{
 		System.out.println(itemDroppedMessage);
 	}
 	
+	public void useItem(String itemName) {
+		String useItemMessage = "";
+
+		if(this.inventory.isEmpty())
+		{
+			useItemMessage = useItemMessage + "You do not have any items in your inventory.";
+		}
+		else if(this.itemAvailable(itemName))
+		{
+			Item item = searchItemByName(itemName);
+			if(item instanceof Equipable)
+			{
+				for(int i = 0; i < this.inventory.size(); i++)
+				{
+					if(itemName.equalsIgnoreCase(this.inventory.get(i).getItemName()))
+					{
+						Equipable usedItem = (Equipable) this.inventory.get(i);
+						inventory.remove(i);
+						usedItems.add(usedItem);
+						if(usedItem.getUseMessage() == null)
+						{
+							useItemMessage = useItemMessage + usedItem.getItemName() + " has been used successfully.";
+						}
+						else
+						{
+						useItemMessage = usedItem.getUseMessage();
+						}
+					}
+				}
+			}
+			else
+			{
+				useItemMessage = useItemMessage + "This item is not useable. Must be a consumable.";
+			}
+		}
+		else
+		{
+			useItemMessage = useItemMessage + itemName + " is not in your item inventory.";
+		}
+		System.out.println(useItemMessage);
+	}
+	
+	//method to search item by name and return item from inventory
 	private Item searchItemByName(String itemName) {
 		Item item = null;
 		

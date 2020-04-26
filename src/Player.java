@@ -280,4 +280,29 @@ public class Player extends Entity implements Serializable{
 			}
 		}
 	}
+	
+	public boolean inUsedItems(String itemName) {
+		boolean inUsedItems = false;
+
+		if(usedItems.isEmpty())
+		{
+			inUsedItems = false;
+		}
+		else if (usedItems.size() > 0)
+		{
+			for(int i = 0; i < usedItems.size(); i++)
+			{
+				if(itemName.equalsIgnoreCase(usedItems.get(i).getItemName()))
+				{
+					inUsedItems = true;
+					break;
+				}
+				else
+				{
+					inUsedItems = false;
+				}
+			}
+		}
+		return inUsedItems;
+	}
 }

@@ -380,6 +380,10 @@ public class Map implements Serializable {
 			}
 			System.out.println();
 		}
+		if (room.getPuzzle() != null && !room.getPuzzle().isSolved())
+		{
+			System.out.println("There is a puzzle in this room. Type \"attempt puzzle\" to solve.");
+		}
 		Scanner in = new Scanner(System.in);
 		String[] consoleText = in.nextLine().split(" ");
 		String command = consoleText[0];
@@ -479,13 +483,10 @@ public class Map implements Serializable {
 					e.printStackTrace();
 				}
 			}
-			else if(command.equalsIgnoreCase("save") && input.equalsIgnoreCase("game"))
+			else if(command.equalsIgnoreCase("attempt") && input.equalsIgnoreCase("puzzle") && room.getPuzzle() != null)
 			{
-				try {
-					Game.saveGame();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				room.getPuzzle().solve(in);
+				play();
 			}
 			else
 			{

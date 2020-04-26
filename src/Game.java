@@ -30,7 +30,6 @@ public class Game {
 			String name = input.next();
 			
 			Player player = new Player(name, 3, 1, new ArrayList<Item>(), new ArrayList<Item>());
-			
 			map = new Map(player, roomsFile, itemsFile, puzzlesFile, monstersFile, endingsFile);
 			
 			map.createGame();

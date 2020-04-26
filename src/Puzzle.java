@@ -5,7 +5,7 @@ public class Puzzle implements Serializable{
 	//instance variables
 	private int puzzleID;
 	private String[] puzzleDescription;
-	private String answer;
+	private String[] answer;
 	private String hint;
 	private int attempts;
 	private String failMessage;
@@ -13,7 +13,7 @@ public class Puzzle implements Serializable{
 	private int currentRoomID;
 	
 	//Constructor
-	public Puzzle(int puzzleID, String[] puzzleDescription, String answer, String hint, int attempts, String failMessage, String successMessage, int currentRoomID) {
+	public Puzzle(int puzzleID, String[] puzzleDescription, String[] answer, String hint, int attempts, String failMessage, String successMessage, int currentRoomID) {
 	
 		this.puzzleID = puzzleID;
 		this.puzzleDescription = puzzleDescription;
@@ -42,11 +42,11 @@ public class Puzzle implements Serializable{
 		this.puzzleDescription = puzzleDescription;
 	}
 
-	public String getAnswer() {
+	public String[] getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(String answer) {
+	public void setAnswer(String[] answer) {
 		this.answer = answer;
 	}
 

@@ -232,7 +232,7 @@ public class Map implements Serializable {
 
 		int puzzleID = Integer.parseInt(puzzleInfo[0]);
 		String[] puzzleDescription = puzzleInfo[1].split("#");
-		String answer = puzzleInfo[2];
+		String[] answer = puzzleInfo[2].split(",");
 		String hint = puzzleInfo[3];
 		int attempts = Integer.parseInt(puzzleInfo[4]);
 		String fail = puzzleInfo[5];

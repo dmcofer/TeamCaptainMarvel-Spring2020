@@ -201,7 +201,7 @@ public class Map {
 		String[] puzzleInfo = puzzleString.split("~");
 
 		int puzzleID = Integer.parseInt(puzzleInfo[0]);
-		String puzzleDescription = puzzleInfo[1];
+		String[] puzzleDescription = puzzleInfo[1].split("#");
 		String answer = puzzleInfo[2];
 		String hint = puzzleInfo[3];
 		int attempts = Integer.parseInt(puzzleInfo[4]);

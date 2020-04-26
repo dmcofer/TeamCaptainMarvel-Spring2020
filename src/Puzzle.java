@@ -3,7 +3,7 @@ public class Puzzle {
 
 	//instance variables
 	private int puzzleID;
-	private String puzzleDescription;
+	private String[] puzzleDescription;
 	private String answer;
 	private String hint;
 	private int attempts;
@@ -12,7 +12,7 @@ public class Puzzle {
 	private int currentRoomID;
 	
 	//Constructor
-	public Puzzle(int puzzleID, String puzzleDescription, String answer, String hint, int attempts, String failMessage, String successMessage, int currentRoomID) {
+	public Puzzle(int puzzleID, String[] puzzleDescription, String answer, String hint, int attempts, String failMessage, String successMessage, int currentRoomID) {
 	
 		this.puzzleID = puzzleID;
 		this.puzzleDescription = puzzleDescription;
@@ -33,11 +33,11 @@ public class Puzzle {
 		this.puzzleID = puzzleID;
 	}
 
-	public String getPuzzleDescription() {
+	public String[] getPuzzleDescription() {
 		return puzzleDescription;
 	}
 
-	public void setPuzzleDescription(String puzzleDescription) {
+	public void setPuzzleDescription(String[] puzzleDescription) {
 		this.puzzleDescription = puzzleDescription;
 	}
 

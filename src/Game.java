@@ -11,6 +11,7 @@ public class Game {
 	
 	private static Map map;
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -66,6 +67,7 @@ public class Game {
 			output.writeObject(map.getAvailableMonsters());
 			System.out.println("Save Successful");
 		}
+		map.play();
 	}
 
 }

@@ -363,11 +363,22 @@ public class Map implements Serializable {
 			System.out.println(player.getEntityName() + " is in the " + room.getRoomName() + " room.");
 			System.out.println();
 			String[] description = room.getRoomDescription();
-			for (String s: description) {
+			for (String s: description)
+			{
 				System.out.println(s);
 			}
 			System.out.println("Movement: north, east, south, west (shorthand: n, e, s, w)");
 			System.out.println("What would you like to do?");
+		}
+		
+		if (!room.getMonsters().isEmpty())
+		{
+			System.out.print("Monsters in this room:");
+			for (int i = 0; i < room.getMonsters().size(); i++)
+			{
+				System.out.print(" " + room.getMonsters().get(i).getEntityName());
+			}
+			System.out.println();
 		}
 		Scanner in = new Scanner(System.in);
 		String[] consoleText = in.nextLine().split(" ");

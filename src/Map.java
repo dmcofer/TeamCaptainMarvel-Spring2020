@@ -95,29 +95,6 @@ public class Map implements Serializable {
 		this.availableMonsters = availableMonsters;
 	}
 
-	public ArrayList<Room> getRoomList() {
-		return roomList;
-	}
-
-	public void setRoomList(ArrayList<Room> roomList) {
-		this.roomList = roomList;
-	}
-
-	public ArrayList<Item> getAvailableItems() {
-		return availableItems;
-	}
-
-	public void setAvailableItems(ArrayList<Item> availableItems) {
-		this.availableItems = availableItems;
-	}
-
-	public ArrayList<Monster> getAvailableMonsters() {
-		return availableMonsters;
-	}
-
-	public void setAvailableMonsters(ArrayList<Monster> availableMonsters) {
-		this.availableMonsters = availableMonsters;
-	}
 
 	public void createGame() {
 

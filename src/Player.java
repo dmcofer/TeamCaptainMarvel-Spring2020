@@ -94,22 +94,38 @@ public class Player extends Entity implements Serializable{
 	}
 
 	//method to display item description if the examine item command is used and the item is in the player's inventory
-	public void inspect(String itemName) {
+	public void inspect(String itemName, Room room) {
 		String itemDescription = "";
-
-		for(int i = 0; i < this.getInventory().size(); i++)
+		
+		if(!this.itemAvailable(itemName) && !room.itemAvailable(itemName))
 		{
-			if(itemName.equalsIgnoreCase(this.getInventory().get(i).getItemName()))
+			itemDescription = itemName + " is not available for examination";
+		}
+		else
+		{
+			if(room.itemAvailable(itemName))
 			{
-				itemDescription = this.getInventory().get(i).getItemDescription();
-				break;
+				for(int i = 0; i < room.getItemInventory().size(); i++)
+				{
+					if(itemName.equalsIgnoreCase(room.getItemInventory().get(i).getItemName()))
+					{
+						itemDescription = room.getItemInventory().get(i).getItemDescription();
+						break;
+					}
+				}
 			}
 			else
 			{
-				itemDescription = itemName + " is not available for examination";
+				for(int i = 0; i < this.getInventory().size(); i++)
+				{
+					if(itemName.equalsIgnoreCase(this.getInventory().get(i).getItemName()))
+					{
+						itemDescription = this.getInventory().get(i).getItemDescription();
+						break;
+					}
+				}
 			}
 		}
-
 		System.out.println(itemDescription);
 	}
 

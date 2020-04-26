@@ -173,6 +173,38 @@ public class Player extends Entity {
 		}
 		System.out.println(itemDroppedMessage);
 	}
-
-
+	
+	private Item searchItemByName(String itemName) {
+		Item item = null;
+		
+		for(int i = 0; i < inventory.size(); i++)
+		{
+			if(inventory.get(i).getItemName().equalsIgnoreCase(itemName))
+			{
+				item = inventory.get(i);
+			}
+		}
+		
+		return item;
+	}
+	
+	public void consumeItem(String itemName) {
+		if(itemAvailable(itemName))
+		{
+			Item item = searchItemByName(itemName);
+			
+			if(item instanceof Consumable)
+			{
+				int health = this.getHealth() + ((Consumable) item).getHealthIncrease();
+				this.setHealth(health);
+				inventory.remove(item);
+				usedItems.add(item);
+				System.out.println(itemName + " has been consumed and your health is now " + this.getHealth() + " health points.");	
+			}
+			else
+			{
+				System.out.println(itemName + " is not a consumable item.");
+			}
+		}
+	}
 }

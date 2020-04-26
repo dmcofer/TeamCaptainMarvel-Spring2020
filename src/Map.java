@@ -16,7 +16,7 @@ public class Map {
 	private ArrayList<Monster> availableMonsters = new ArrayList<>();
 	//Constructor
 	public Map(Player player, File roomsFile, File itemsFile, File puzzlesFile, File monstersFile) {
-		
+
 		this.player = player;
 		this.roomsFile = roomsFile;
 		this.itemsFile = itemsFile;
@@ -286,7 +286,7 @@ public class Map {
 			this.player.setCurrentRoomID(newRoomID);
 		}
 	}
-	
+
 	public void exit() {
 		System.out.println("Thank You for playing Rabloons. Have a Great Day!" );
 		System.exit(0);
@@ -296,9 +296,9 @@ public class Map {
 		Room room = searchRoomByID(player.getCurrentRoomID());
 		if (room.isVisited() == true)
 		{
-		System.out.println(player.getEntityName() + " is in the " + room.getRoomName() + " room.");
-		System.out.println("Movement: north, east, south, west (shorthand: n, e, s, w)");
-		System.out.println("What would you like to do?");
+			System.out.println(player.getEntityName() + " is in the " + room.getRoomName() + " room.");
+			System.out.println("Movement: north, east, south, west (shorthand: n, e, s, w)");
+			System.out.println("What would you like to do?");
 		}
 		else
 		{
@@ -328,13 +328,62 @@ public class Map {
 				play();
 			}
 		}
-		if(consoleText.length == 2)
+		else if(consoleText.length == 2)
 		{
 			String input = consoleText[1];
 			if(command.equalsIgnoreCase("search") && input.equalsIgnoreCase("room"))
 			{
 				player.search(room);
 				play();
+			}
+			else if(command.equalsIgnoreCase("consume"))
+			{
+				if(player.getInventory().isEmpty())
+				{
+					System.out.println("There are no items in your inventory!");
+					play();
+				}
+				else if(player.itemAvailable(input))
+				{
+					player.consumeItem(input);
+					play();
+				}
+				else
+				{
+					System.out.println(input + " is not in your inventory!");
+				}
+			}
+			else
+			{
+				System.out.println("That was not a valid command");
+				play();
+			}
+		}
+		else if(consoleText.length > 2)
+		{
+			String input = consoleText[1];
+			for(int i = 2; i < consoleText.length; i++)
+			{
+				input = input + " " + consoleText[i];
+			}
+			
+			if(command.equalsIgnoreCase("consume"))
+			{
+				if(player.getInventory().isEmpty())
+				{
+					System.out.println("There are no items in your inventory!");
+					play();
+				}
+				else if(player.itemAvailable(input))
+				{
+					player.consumeItem(input);
+					play();
+				}
+				else
+				{
+					System.out.println(input + " is not in your inventory!");
+					play();
+				}
 			}
 			else
 			{

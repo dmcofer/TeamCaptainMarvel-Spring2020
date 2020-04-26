@@ -17,17 +17,19 @@ public class Map implements Serializable {
 	private File itemsFile;
 	private File puzzlesFile;
 	private File monstersFile;
+	private File endingsFile;
 	private ArrayList<Room> roomList = new ArrayList<>();
 	private ArrayList<Item> availableItems = new ArrayList<>();
 	private ArrayList<Monster> availableMonsters = new ArrayList<>();
 	//Constructor
-	public Map(Player player, File roomsFile, File itemsFile, File puzzlesFile, File monstersFile) {
+	public Map(Player player, File roomsFile, File itemsFile, File puzzlesFile, File monstersFile, File endingsFile) {
 
 		this.player = player;
 		this.roomsFile = roomsFile;
 		this.itemsFile = itemsFile;
 		this.puzzlesFile = puzzlesFile;
 		this.monstersFile = monstersFile;
+		this.endingsFile = endingsFile;
 	}
 
 	//getter and setter methods
@@ -95,29 +97,6 @@ public class Map implements Serializable {
 		this.availableMonsters = availableMonsters;
 	}
 
-	public ArrayList<Room> getRoomList() {
-		return roomList;
-	}
-
-	public void setRoomList(ArrayList<Room> roomList) {
-		this.roomList = roomList;
-	}
-
-	public ArrayList<Item> getAvailableItems() {
-		return availableItems;
-	}
-
-	public void setAvailableItems(ArrayList<Item> availableItems) {
-		this.availableItems = availableItems;
-	}
-
-	public ArrayList<Monster> getAvailableMonsters() {
-		return availableMonsters;
-	}
-
-	public void setAvailableMonsters(ArrayList<Monster> availableMonsters) {
-		this.availableMonsters = availableMonsters;
-	}
 
 	public void createGame() {
 
@@ -125,12 +104,14 @@ public class Map implements Serializable {
 		Scanner puzzleScanner = null;
 		Scanner monsterScanner = null;
 		Scanner roomScanner = null;
+		Scanner endingScanner = null;
 
 		try {
 			itemScanner = new Scanner(itemsFile);
 			puzzleScanner = new Scanner(puzzlesFile);
 			monsterScanner = new Scanner(monstersFile);
 			roomScanner = new Scanner(roomsFile);
+			endingScanner = new Scanner(endingsFile);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -140,6 +121,7 @@ public class Map implements Serializable {
 		puzzleScanner.nextLine();
 		monsterScanner.nextLine();
 		roomScanner.nextLine();
+		endingScanner.nextLine();
 
 		while (itemScanner.hasNext()) {
 			createItems(itemScanner.nextLine());
@@ -155,6 +137,10 @@ public class Map implements Serializable {
 
 		while (puzzleScanner.hasNext()) {
 			createPuzzles(puzzleScanner.nextLine());
+		}
+		
+		while (endingScanner.hasNext()) {
+			createEndings(endingScanner.nextLine());
 		}
 	}
 
@@ -267,6 +253,21 @@ public class Map implements Serializable {
 
 		Room room = searchRoomByID(location);
 		room.setPuzzle(puzzle);
+	}
+	
+	private void createEndings(String endingString) {
+		
+		String[] endingInfo = endingString.split("~");
+		
+		int endingID = Integer.parseInt(endingInfo[0]);
+		String endingDescription = endingInfo[1];
+		String endingPrompt = endingInfo[2];
+		String endingCommand = endingInfo[3];
+		boolean puzzleConnection = Boolean.parseBoolean(endingInfo[4]);
+		boolean multipleEnds = Boolean.parseBoolean(endingInfo[5]);
+		boolean monsterConnection = Boolean.parseBoolean(endingInfo[6]);
+		
+		Ending e = new Ending(endingID, endingDescription, endingPrompt, endingCommand, puzzleConnection, multipleEnds, monsterConnection);
 	}
 
 	private Room searchRoomByID(int roomID) {

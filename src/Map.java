@@ -328,6 +328,20 @@ public class Map {
 				play();
 			}
 		}
+		if(consoleText.length == 2)
+		{
+			String input = consoleText[1];
+			if(command.equalsIgnoreCase("search") && input.equalsIgnoreCase("room"))
+			{
+				player.search(room);
+				play();
+			}
+			else
+			{
+				System.out.println("That was not a valid command");
+				play();
+			}
+		}
 	}
 
 }

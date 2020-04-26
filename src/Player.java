@@ -76,6 +76,21 @@ public class Player extends Entity {
 		}
 		return itemAvailable;
 	}
+	
+	public void search(Room room)
+	{
+		if(room.getItemInventory().isEmpty())
+		{
+			System.out.println("This room is empty. There are no items.");
+		}
+		else
+		{
+			for(int i = 0; i < room.getItemInventory().size(); i++)
+			{
+				System.out.println(room.getItemInventory().get(i).getItemName());
+			}
+		}
+	}
 
 	//method to display item description if the examine item command is used and the item is in the player's inventory
 	public void examine(String itemName) {

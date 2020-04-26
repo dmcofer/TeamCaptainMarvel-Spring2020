@@ -134,7 +134,8 @@ public class Player extends Entity implements Serializable{
 					{
 						room.setHasItem(false);
 					}
-					itemPickedUpMessage = itemName + " has been added to your inventory.";
+					itemPickedUpMessage = itemName + " has been picked up from the room and successfully added to " +
+					this.getEntityName() + "'s inventory.";
 					break;
 				}
 			}
@@ -164,7 +165,8 @@ public class Player extends Entity implements Serializable{
 					room.getItemInventory().add(item);
 					inventory.remove(i);
 					room.setHasItem(true);
-					itemDroppedMessage = itemName + " has been dropped in the current room.";
+					itemDroppedMessage = itemName + " has been dropped successfully from " + this.getEntityName()
+					+ "'s inventory and placed in the " + room.getRoomName() + ".";
 				}
 			}
 		}

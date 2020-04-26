@@ -407,6 +407,19 @@ public class Map implements Serializable {
 					play();
 				}
 			}
+			else if(command.equalsIgnoreCase("drop"))
+			{
+				if(player.getInventory().isEmpty())
+				{
+					System.out.println(player.getEntityName() + " does not have any items!");
+					play();
+				}
+				else
+				{
+					player.dropItem(input, room);
+					play();
+				}
+			}
 			else if(command.equalsIgnoreCase("consume"))
 			{
 				if(player.getInventory().isEmpty())
@@ -465,6 +478,19 @@ public class Map implements Serializable {
 				else
 				{
 					player.pickupItem(input, room);
+					play();
+				}
+			}
+			else if(command.equalsIgnoreCase("drop"))
+			{
+				if(player.getInventory().isEmpty())
+				{
+					System.out.println(player.getEntityName() + " does not have any items!");
+					play();
+				}
+				else
+				{
+					player.dropItem(input, room);
 					play();
 				}
 			}

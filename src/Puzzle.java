@@ -32,23 +32,39 @@ public class Puzzle implements Serializable{
 	public void solve(Scanner kb) {
 		
 		System.out.println();
-		System.out.println(puzzleDescription);
+		for (String s: puzzleDescription) {
+			System.out.println(s);
+		}
+		System.out.println("Type \"solve\" when ready to solve the puzzle");
+		String solve = kb.nextLine();
+		
+		if (solve.equalsIgnoreCase("solve")) {
+			for (int i = 0; i < 20; i++) {
+				System.out.println();
+			}
+		}
 		int i = 0;
 		
 		//guess until win/lose
-		while (attempts > 0 && !isSolved) {
+		while (solve.equalsIgnoreCase("solve") && attempts > 0 && !isSolved) {
 			String guess = kb.nextLine();
 			
 			//player enters correct answer
 			if (guess.equalsIgnoreCase(answer[i])) {
 				System.out.println("Correct!");
-				isSolved = true;
+				i++;
 			}
 			
 			//incorrect answers decrease the amount of attempts
 			else {
 				attempts--;
 				System.out.println("The answer you provided is wrong, you still have " + attempts + " attempt(s) left.");
+				i = 0;
+			}
+			
+			if (i == answer.length) {
+				System.out.println(successMessage);
+				isSolved = true;
 			}
 		}
 		

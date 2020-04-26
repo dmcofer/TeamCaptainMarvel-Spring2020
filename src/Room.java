@@ -135,6 +135,37 @@ public class Room {
 		}
 		return itemAvailable;
 	}
+	
+	//returns the roomID that is in the direction that the user entered from the room that the player is already in.
+		public int canIMove(String direction)
+		{
+			if(direction.equalsIgnoreCase("N") || direction.equalsIgnoreCase("North"))
+			{
+				return getConnections()[0];
+			}
+			else if(direction.equalsIgnoreCase("E") || direction.equalsIgnoreCase("East"))
+			{
+				return getConnections()[1];
+			}
+			else if(direction.equalsIgnoreCase("S") || direction.equalsIgnoreCase("South"))
+			{
+				return getConnections()[2];
+			}
+			else if(direction.equalsIgnoreCase("W") || direction.equalsIgnoreCase("West"))
+			{
+				return getConnections()[3];
+			}
+			else
+			{
+				return -1;
+			}
+		}
+		
+		//error message for when user spells controls wrong or enters invalid controls
+		public void notValidInput()
+		{
+			System.out.println("That was not a valid direction. Try N, S, E, or W.");
+		}
 
 
 

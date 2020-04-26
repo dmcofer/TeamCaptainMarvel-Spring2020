@@ -421,6 +421,19 @@ public class Map implements Serializable {
 					play();
 				}
 			}
+			else if(command.equalsIgnoreCase("inspect"))
+			{
+				if(player.getInventory().isEmpty() && room.getItemInventory().isEmpty())
+				{
+					System.out.println("There are no items available to inspect!");
+					play();
+				}
+				else
+				{
+					player.inspect(input, room);
+					play();
+				}
+			}
 			else if(command.equalsIgnoreCase("consume"))
 			{
 				if(player.getInventory().isEmpty())
@@ -492,6 +505,19 @@ public class Map implements Serializable {
 				else
 				{
 					player.dropItem(input, room);
+					play();
+				}
+			}
+			else if(command.equalsIgnoreCase("inspect"))
+			{
+				if(player.getInventory().isEmpty() && room.getItemInventory().isEmpty())
+				{
+					System.out.println("There are no items available to inspect!");
+					play();
+				}
+				else
+				{
+					player.inspect(input, room);
 					play();
 				}
 			}

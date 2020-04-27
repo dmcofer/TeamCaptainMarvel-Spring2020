@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player extends Entity implements Serializable{
 
@@ -281,7 +282,7 @@ public class Player extends Entity implements Serializable{
 		}
 	}
 	
-	public boolean inUsedItems(String itemName) {
+	public boolean inUsedItems(int itemID) {
 		boolean inUsedItems = false;
 
 		if(usedItems.isEmpty())
@@ -292,7 +293,7 @@ public class Player extends Entity implements Serializable{
 		{
 			for(int i = 0; i < usedItems.size(); i++)
 			{
-				if(itemName.equalsIgnoreCase(usedItems.get(i).getItemName()))
+				if(itemID == usedItems.get(i).getItemID())
 				{
 					inUsedItems = true;
 					break;
@@ -304,5 +305,80 @@ public class Player extends Entity implements Serializable{
 			}
 		}
 		return inUsedItems;
+	}
+	
+	public void attack(Room room, Scanner kb) {
+		
+		if (room.getMonsters().isEmpty()) {
+			System.out.println("No monsters around to attack");
+			return;
+		}
+		
+		Monster monster = room.getMonsters().get(0);
+		
+		int[] items = monster.getItemIDArray();
+		int countOfItems = 0;
+		
+		for (int i: items) {
+			if (inUsedItems(i)) {
+				countOfItems++;
+			}
+		}
+		
+		boolean playerDamage = true; //true if player does damage to monster, false if monster does damage to player
+		
+		if (countOfItems == 0) {
+			playerDamage = attackCalc(monster.getChanceOfWinning());
+		}
+		
+		else if (countOfItems == 1) {
+			playerDamage = attackCalc(monster.getIncreasedOddsArray()[0]);
+		}
+		
+		else if (countOfItems == 2) {
+			playerDamage = attackCalc(monster.getIncreasedOddsArray()[1]);
+		}
+		
+		if (playerDamage) {
+			monster.setHealth(monster.getHealth() - 1);
+			System.out.println("You did 1 heart of damage to the " + monster.getEntityName() + ". It now has " + monster.getHealth() + " heart(s) left");
+			if (monster.getHealth() == 0) {
+				System.out.println(monster.getEntityName() + " has been defeated");
+				room.getMonsters().remove(0);
+			}
+		}
+		else {
+			setHealth(getHealth() - 1);
+			System.out.println("You took 1 heart of damage. You now have " + getHealth() + " heart(s) left");
+			if (getHealth() == 0) {
+				System.out.println("You have been defeated. Game Over");
+				System.exit(0);
+			}
+		}
+		
+		System.out.println("Attack or Runaway");
+		String choice = kb.nextLine();
+		
+		while (!(choice.equalsIgnoreCase("attack") ^ choice.equalsIgnoreCase("runawa"))) {
+			System.out.println("You must attack again or runaway");
+		}
+		
+		if (choice.equalsIgnoreCase("attack"))
+			attack(room, kb);
+		else
+			return;
+		
+	}
+	
+	public boolean attackCalc(int playerChance) {
+		
+		int chance = (int)(Math.random() * 100 + 1);
+		
+		if (chance <= playerChance)
+			return true;
+		else
+			return false;
+		
+		
 	}
 }

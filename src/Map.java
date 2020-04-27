@@ -418,6 +418,11 @@ public class Map implements Serializable {
 				move(command);
 				play();
 			}
+			else if(command.equalsIgnoreCase("attack"))
+			{
+				player.attack(room, in);
+				play();
+			}
 			else if(command.equalsIgnoreCase("exit"))
 			{
 				exit();

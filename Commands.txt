@@ -1,0 +1,49 @@
+|___________________________________________________________
+|User input       |Action                                  |
+|-----------------|----------------------------------------|
+|"North" or "N"   |Player Moves to North Room if available |
+|-----------------|----------------------------------------|
+|"South" or "S"   |Player Moves to South Room if available |
+|-----------------|----------------------------------------|
+|"East" or "E"    |Player Moves to East Room if available  |
+|-----------------|----------------------------------------|
+|"West" or "W"    |Player Moves to West  Room if available |
+|-----------------|----------------------------------------|
+|"Exit"           |Player exits game                       |
+|-----------------|----------------------------------------|
+|"Inspect"        |Displays Room's inspect message         |
+|-----------------|----------------------------------------|
+|"Check Inventory"|Displays Players's item inventory       |
+|-----------------|----------------------------------------|
+|"Search Room"    |Displays Room's inventory               |
+|-----------------|----------------------------------------|
+|"Pickup" +       |Adds item from room's inventory to the  |
+|"Item Name"      |player's inventory.                     |
+|-----------------|----------------------------------------|
+|"Drop" +         |Drops item form player inventory to the |
+|"Item Name"      |room's inventory.                       |
+|-----------------|----------------------------------------|
+|"Inspect" +      |Displays the item's description.        |
+|"Item Name"      |                                        |
+|-----------------|----------------------------------------|
+|"Use" +          |Equips Item and Player receives attack  |
+|"Item Name"      | bonus if available during fight        |
+|-----------------|----------------------------------------|
+|"Consume" +      |Increases players health points if item |
+|"Item Name"      |has health bonus. (if in inventory)     |
+|-----------------|----------------------------------------|
+|"Save Game"      |Saves Current Game State                |
+|-----------------|----------------------------------------|
+|"Attack"         |Attacks monster.Calculates damage.Prints|
+|                 | (while in fight)                       | 
+|-----------------|----------------------------------------|
+|"runaway"        |Exits in the middle of a fight          | 
+|-----------------|----------------------------------------|
+|"attempt puzzle" |takes game to puzzle mode               |
+|-----------------|----------------------------------------|
+|"Solve Puzzle"   |Starts Puzzle and asks for answers      |
+|-----------------|----------------------------------------|
+|"help"           |displays hint for puzzle if unlocked    |
+|-----------------|----------------------------------------|
+|"giveup"         |quits puzzle and returns to current room|
+|-----------------|----------------------------------------|

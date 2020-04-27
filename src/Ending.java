@@ -4,22 +4,24 @@ public class Ending implements Serializable {
 	
 	//instance variables
 	private int endingID;
-	private String endingDescription;
+	private String[] endingDescription;
 	private String endingPrompt;
 	private String endingCommand;
+	private String nonEnding;
 	private boolean isConnectedToPuzzle;
 	private boolean hasMultipleOutcomes;
 	private boolean isConnectedToMonsters;
 	private int currentRoomID;
 	
 	//Constructor
-	public Ending(int endingID, String endingDescription, String endingPrompt, String endingCommand, boolean isConnectedToPuzzle,
+	public Ending(int endingID, String[] endingDescription, String endingPrompt, String endingCommand, String nonEnding, boolean isConnectedToPuzzle,
 					boolean hasMultipleOutcomes, boolean isConnectedToMonsters) {
 		
 		this.endingID = endingID;
 		this.endingDescription = endingDescription;
 		this.endingPrompt = endingPrompt;
 		this.endingCommand = endingCommand;
+		this.nonEnding = nonEnding;
 		this.isConnectedToPuzzle = isConnectedToPuzzle;
 		this.hasMultipleOutcomes = hasMultipleOutcomes;
 		this.isConnectedToMonsters = isConnectedToMonsters;
@@ -34,11 +36,11 @@ public class Ending implements Serializable {
 		this.endingID = endingID;
 	}
 
-	public String getEndingDescription() {
+	public String[] getEndingDescription() {
 		return endingDescription;
 	}
 
-	public void setEndingDescription(String endingDescription) {
+	public void setEndingDescription(String[] endingDescription) {
 		this.endingDescription = endingDescription;
 	}
 	

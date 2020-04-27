@@ -260,15 +260,16 @@ public class Map implements Serializable {
 		String[] endingInfo = endingString.split("~");
 		
 		int endingID = Integer.parseInt(endingInfo[0]);
-		String endingDescription = endingInfo[1];
+		String[] endingDescription = endingInfo[1].split("#");
 		String endingPrompt = endingInfo[2];
 		String endingCommand = endingInfo[3];
-		boolean puzzleConnection = Boolean.parseBoolean(endingInfo[4]);
-		boolean multipleEnds = Boolean.parseBoolean(endingInfo[5]);
-		boolean monsterConnection = Boolean.parseBoolean(endingInfo[6]);
-		int roomID = Integer.parseInt(endingInfo[7]);
+		String nonEnding = endingInfo[4];
+		boolean puzzleConnection = Boolean.parseBoolean(endingInfo[5]);
+		boolean multipleEnds = Boolean.parseBoolean(endingInfo[6]);
+		boolean monsterConnection = Boolean.parseBoolean(endingInfo[7]);
+		int roomID = Integer.parseInt(endingInfo[8]);
 		
-		Ending e = new Ending(endingID, endingDescription, endingPrompt, endingCommand, puzzleConnection, multipleEnds, monsterConnection);
+		Ending e = new Ending(endingID, endingDescription, endingPrompt, endingCommand, nonEnding, puzzleConnection, multipleEnds, monsterConnection);
 		Room room = searchRoomByID(roomID);
 		room.setEnding(e);
 	}

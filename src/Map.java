@@ -389,37 +389,23 @@ public class Map implements Serializable {
 		
 		if (room.getEnding() != null)
 		{
-			if (room.getEnding().isConnectedToMonsters())
+			System.out.println("You have found a possible ending. Do you wish to continue? (Yes or No)");
+			String choice = in.nextLine();
+			
+			while (!(choice.equalsIgnoreCase("yes") ^ choice.equalsIgnoreCase("no")))
 			{
-				
+				System.out.println("Must choose whether to continue with this ending. (Yes or N0)");
+				choice = in.nextLine();
 			}
 			
-			else if (room.getEnding().isConnectedToMonsters())
+			if (room.getEnding().isHasMultipleOutcomes() && choice.equalsIgnoreCase("yes"))
 			{
-				
+				room.getEnding().showMultipleEnding(in);
 			}
 			
-			else if (room.getEnding().isHasMultipleOutcomes())
-			{
+			else if (choice.equalsIgnoreCase("yes"))
+				room.getEnding().showEnding(in);
 				
-			}
-			
-			else
-			{
-				System.out.println("You have found a possible ending. Do you wish to continue? (Yes or No)");
-				String choice = in.nextLine();
-				
-				while (!(choice.equalsIgnoreCase("yes") ^ choice.equalsIgnoreCase("no")))
-				{
-					System.out.println("Must choose whether to continue with this ending. (Yes or N0)");
-					choice = in.nextLine();
-				}
-				
-				if (choice.equalsIgnoreCase("yes"))
-				{
-					room.getEnding().showEnding(in);
-				}
-			}
 		}
 		
 		String[] consoleText = in.nextLine().split(" ");

@@ -104,4 +104,45 @@ public class Ending implements Serializable {
 			System.exit(1);
 		}
 	}
+	
+	public void showMultipleEnding(Scanner kb) {
+		
+		String[] choices = endingPrompt.split("#");
+		String choice = kb.nextLine();
+		
+		while (!isParseable(choice)) {
+			System.out.println("Not a valid choice, must be a number");
+		}
+		
+		int num = Integer.parseInt(choice);
+		
+		if (num == 1) {
+			for (String s: endingDescription)
+				System.out.println(s);
+			System.exit(1);
+		}
+		
+		else if (num == 5) {
+			System.out.println("The ship flew into the sun and you have died. Game over.");
+			System.exit(1);
+		}
+		
+		else {
+			System.out.println(nonEnding);
+			showMultipleEnding(kb);
+		}
+		
+		
+	}
+	
+	public boolean isParseable(String s) {
+		
+		try {
+			Integer.parseInt(s);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
 }

@@ -567,6 +567,22 @@ public class Map implements Serializable {
 				room.getPuzzle().solve(in, hintRoom.isVisited());
 				play();
 			}
+			else if(command.equalsIgnoreCase("return") && input.equalsIgnoreCase("home"))
+			{
+				String str = command + " " + input;
+				
+				if(str.equalsIgnoreCase(room.getSpecialCommand()[0]))
+				{
+					move(room);
+					play();
+				}
+				
+				else
+				{
+					System.out.println("That was not a valid command");
+					play();
+				}
+			}
 			else
 			{
 				System.out.println("That was not a valid command");

@@ -20,6 +20,17 @@ public class Monster extends Entity implements Serializable {
 		this.itemIDArray = itemIDArray;
 		
 	}
+	
+	public Monster(Monster monster)
+	{
+		super(monster.getEntityName(), monster.getHealth());
+		this.monsterID = monster.monsterID;
+		this.monsterDescription = monster.monsterDescription;
+		this.chanceOfWinning = monster.chanceOfWinning;
+		this.increasedOddsArray = monster.increasedOddsArray;
+		this.itemIDArray = monster.itemIDArray;
+		
+	}
 
 	//getter and setter methods
 	public int getMonsterID() {
@@ -61,7 +72,5 @@ public class Monster extends Entity implements Serializable {
 	public void setItemIDArray(int[] itemIDArray) {
 		this.itemIDArray = itemIDArray;
 	}
-	
-	
 	
 }

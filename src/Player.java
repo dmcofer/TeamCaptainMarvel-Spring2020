@@ -345,6 +345,11 @@ public class Player extends Entity implements Serializable{
 			if (monster.getHealth() == 0) {
 				System.out.println(monster.getEntityName() + " has been defeated");
 				room.getMonsters().remove(0);
+				
+				if(room.getMonsters().isEmpty()) {
+					System.out.println("You defeated all the monsters here");
+					return;
+				}
 			}
 		}
 		else {
@@ -359,7 +364,7 @@ public class Player extends Entity implements Serializable{
 		System.out.println("Attack or Runaway");
 		String choice = kb.nextLine();
 		
-		while (!(choice.equalsIgnoreCase("attack") ^ choice.equalsIgnoreCase("runawa"))) {
+		while (!(choice.equalsIgnoreCase("attack") || choice.equalsIgnoreCase("runaway"))) {
 			System.out.println("You must attack again or runaway");
 		}
 		

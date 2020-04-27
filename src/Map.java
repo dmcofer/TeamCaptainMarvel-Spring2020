@@ -227,7 +227,7 @@ public class Map implements Serializable {
 
 		if (check != 0) {
 			for (String s: monsters) {
-				monsterList.add(searchMonsterByID(Integer.parseInt(s)));
+				monsterList.add(new Monster(searchMonsterByID(Integer.parseInt(s))));
 			}
 		}
 		
@@ -330,9 +330,47 @@ public class Map implements Serializable {
 		}
 	}
 
-	public void move(String direction) {
+	public void move(String direction, Scanner in) {
 		Room room = searchRoomByID(player.getCurrentRoomID());
 		room.setVisited(true);
+		
+		if (room.getRoomID() == 16 && (direction.equalsIgnoreCase("n") || direction.equalsIgnoreCase("north")))
+		{
+			System.out.println("There is immanent doom ahead, do you want to proceed? (Yes or No)");
+			String choice = in.nextLine();
+			
+			while(!(choice.equalsIgnoreCase("yes") || choice.equalsIgnoreCase("no")))
+			{
+				System.out.println("Must type \"yes\" or \"no\"");
+				choice = in.nextLine();
+			}
+			
+			int count = 0;
+			
+			if (choice.equalsIgnoreCase("yes"))
+			{
+				while (count < 3)
+				{
+					System.out.println("Are you sure? (Yes or No)");
+					choice = in.nextLine();
+					
+					while(!(choice.equalsIgnoreCase("yes") || choice.equalsIgnoreCase("no")))
+					{
+						System.out.println("Must type \"yes\" or \"no\"");
+						choice = in.nextLine();
+					}
+					
+					if (choice.equalsIgnoreCase("yes"))
+						count++;
+					else
+						play();
+				}
+			}
+			
+			else
+				play();
+		}
+		
 		int newRoomID = room.canIMove(direction);
 		if(newRoomID == -1)
 		{
@@ -413,7 +451,7 @@ public class Map implements Serializable {
 			System.out.println("There is a puzzle in this room. Type \"attempt puzzle\" to solve.");
 		}
 		
-		if (room.getEnding() != null)
+		if (room.getEnding() != null && !room.getEnding().isConnectedToMonsters() && !room.getEnding().isConnectedToPuzzle() && !room.getEnding().isHasMultipleOutcomes())
 		{
 			System.out.println("You have found a possible ending. Do you wish to continue? (Yes or No)");
 			String choice = in.nextLine();
@@ -441,7 +479,7 @@ public class Map implements Serializable {
 		{
 			if(isADirection(command))
 			{
-				move(command);
+				move(command, in);
 				play();
 			}
 			else if(command.equalsIgnoreCase("attack"))
@@ -451,6 +489,11 @@ public class Map implements Serializable {
 			}
 			else if(command.equalsIgnoreCase("inspect"))
 			{
+				if (room.isVisited())
+				{
+					for (String s: room.getRoomDescription())
+						System.out.println(s);
+				}
 				System.out.println(room.getInspectMessage());
 				play();
 			}

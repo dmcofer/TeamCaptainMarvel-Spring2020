@@ -108,6 +108,8 @@ public class Ending implements Serializable {
 	public void showMultipleEnding(Scanner kb) {
 		
 		String[] choices = endingPrompt.split("#");
+		for (String s: choices)
+			System.out.println(s);
 		String choice = kb.nextLine();
 		
 		while (!isParseable(choice)) {

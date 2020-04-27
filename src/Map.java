@@ -354,6 +354,22 @@ public class Map implements Serializable {
 	public void play() {
 		Room room = searchRoomByID(player.getCurrentRoomID());
 		Scanner in = new Scanner(System.in);
+		
+		if (room.getEnding() != null && room.getEnding().isConnectedToMonsters() && room.getMonsters().isEmpty())
+		{
+			String[] ending = room.getEnding().getEndingDescription();
+			for (String s: ending)
+				System.out.println(s);
+			exit();
+		}
+		
+		if (room.getEnding() != null && room.getEnding().isConnectedToPuzzle() && room.getPuzzle().getAttempts() == 0) {
+			String[] ending = room.getEnding().getEndingDescription();
+			for (String s: ending)
+				System.out.println(s);
+			exit();
+		}
+		
 		if (room.isVisited() == true)
 		{
 			System.out.println(player.getEntityName() + " is in the " + room.getRoomName() + " room.");

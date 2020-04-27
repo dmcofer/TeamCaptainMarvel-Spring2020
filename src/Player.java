@@ -47,7 +47,7 @@ public class Player extends Entity implements Serializable{
 		}
 		else
 		{
-			System.out.println("You do not have any items in your inventory.");
+			System.out.println("Your inventory is empty.");
 		}
 	}
 

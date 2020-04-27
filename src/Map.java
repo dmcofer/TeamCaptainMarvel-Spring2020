@@ -413,6 +413,11 @@ public class Map implements Serializable {
 				player.search(room);
 				play();
 			}
+			else if(command.equalsIgnoreCase("check") && input.equalsIgnoreCase("inventory"))
+			{
+				player.inventory();
+				play();
+			}
 			else if(command.equalsIgnoreCase("pickup"))
 			{
 				if(room.getItemInventory().isEmpty())

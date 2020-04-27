@@ -230,8 +230,10 @@ public class Map implements Serializable {
 				monsterList.add(searchMonsterByID(Integer.parseInt(s)));
 			}
 		}
+		
+		String[] specialCommand = roomInfo[7].split(",");
 
-		Room room = new Room(roomID, roomName, roomDescription, inspectMessage, connections, itemList, monsterList, false);
+		Room room = new Room(roomID, roomName, roomDescription, inspectMessage, connections, itemList, monsterList, false, specialCommand);
 
 		roomList.add(room);
 	}
@@ -345,6 +347,14 @@ public class Map implements Serializable {
 			this.player.setCurrentRoomID(newRoomID);
 		}
 	}
+	
+	public void move(Room room) {
+		
+		int newRoomID = Integer.parseInt(room.getSpecialCommand()[1]);
+		System.out.println(room.getSpecialCommand()[2]);
+		
+		this.player.setCurrentRoomID(newRoomID);
+	}
 
 	public void exit() {
 		System.out.println("Thank You for playing Rabloons. Have a Great Day!" );
@@ -439,6 +449,11 @@ public class Map implements Serializable {
 				player.attack(room, in);
 				play();
 			}
+			else if(command.equalsIgnoreCase("inspect"))
+			{
+				System.out.println(room.getInspectMessage());
+				play();
+			}
 			else if(command.equalsIgnoreCase("exit"))
 			{
 				exit();
@@ -519,10 +534,24 @@ public class Map implements Serializable {
 					play();
 				}
 			}
-			else if(command.equalsIgnoreCase("use"))
+			else if(command.equalsIgnoreCase("use") && room.getSpecialCommand()[0].equalsIgnoreCase(" "))
 			{
 				player.useItem(input);
 				play();
+			}
+			else if(command.equalsIgnoreCase("use") && !room.getSpecialCommand()[0].equalsIgnoreCase(" "))
+			{
+				String[] s = room.getSpecialCommand()[0].split(" ");
+				if (s[1].equalsIgnoreCase(input))
+				{
+					move(room);
+					play();
+				}
+				else
+				{
+					player.useItem(input);
+					play();
+				}
 			}
 			else if(command.equalsIgnoreCase("save") && input.equalsIgnoreCase("game"))
 			{
@@ -609,10 +638,32 @@ public class Map implements Serializable {
 					play();
 				}
 			}
-			else if(command.equalsIgnoreCase("use"))
+			else if(command.equalsIgnoreCase("use") && room.getSpecialCommand()[0].equalsIgnoreCase(" "))
 			{
 				player.useItem(input);
 				play();
+			}
+			else if (command.equalsIgnoreCase("use") && !room.getSpecialCommand()[0].equalsIgnoreCase(" "))
+			{
+				String[] s = room.getSpecialCommand()[0].split(" ");
+				String str = s[1];
+				
+				for (int i = 2; i < s.length; i++)
+				{
+					str = str + " " + s[i];
+				}
+				
+				if (str.equalsIgnoreCase(input))
+				{
+					move(room);
+					play();
+				}
+				
+				else
+				{
+					player.useItem(input);
+					play();
+				}
 			}
 			else
 			{

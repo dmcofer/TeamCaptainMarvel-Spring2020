@@ -15,10 +15,11 @@ public class Room implements Serializable{
 	private boolean hasItem;
 	private Puzzle puzzle;
 	private Ending ending;
+	private String[] specialCommand;
 
 	//Constructor
 	public Room(int roomID, String roomName, String[] roomDescription, String inspectMessage, int[] connections,
-			ArrayList<Item> itemInventory, ArrayList<Monster> monsters, boolean visited) {
+			ArrayList<Item> itemInventory, ArrayList<Monster> monsters, boolean visited, String[] specialCommand) {
 
 		this.roomID = roomID;
 		this.roomName = roomName;
@@ -28,6 +29,7 @@ public class Room implements Serializable{
 		this.itemInventory = itemInventory;
 		this.monsters = monsters;
 		this.visited = visited;
+		this.specialCommand = specialCommand;
 		this.hasItem = !itemInventory.isEmpty();
 	}
 
@@ -95,6 +97,14 @@ public class Room implements Serializable{
 		this.visited = visited;
 	}
 	
+	public String[] getSpecialCommand() {
+		return specialCommand;
+	}
+
+	public void setSpecialCommand(String[] specialCommand) {
+		this.specialCommand = specialCommand;
+	}
+
 	public boolean isHasItem() {
 		return hasItem;
 	}

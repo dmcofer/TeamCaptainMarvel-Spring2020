@@ -353,6 +353,7 @@ public class Map implements Serializable {
 
 	public void play() {
 		Room room = searchRoomByID(player.getCurrentRoomID());
+		Scanner in = new Scanner(System.in);
 		if (room.isVisited() == true)
 		{
 			System.out.println(player.getEntityName() + " is in the " + room.getRoomName() + " room.");
@@ -385,7 +386,42 @@ public class Map implements Serializable {
 		{
 			System.out.println("There is a puzzle in this room. Type \"attempt puzzle\" to solve.");
 		}
-		Scanner in = new Scanner(System.in);
+		
+		if (room.getEnding() != null)
+		{
+			if (room.getEnding().isConnectedToMonsters())
+			{
+				
+			}
+			
+			else if (room.getEnding().isConnectedToMonsters())
+			{
+				
+			}
+			
+			else if (room.getEnding().isHasMultipleOutcomes())
+			{
+				
+			}
+			
+			else
+			{
+				System.out.println("You have found a possible ending. Do you wish to continue? (Yes or No)");
+				String choice = in.nextLine();
+				
+				while (!(choice.equalsIgnoreCase("yes") ^ choice.equalsIgnoreCase("no")))
+				{
+					System.out.println("Must choose whether to continue with this ending. (Yes or N0)");
+					choice = in.nextLine();
+				}
+				
+				if (choice.equalsIgnoreCase("yes"))
+				{
+					room.getEnding().showEnding(in);
+				}
+			}
+		}
+		
 		String[] consoleText = in.nextLine().split(" ");
 		String command = consoleText[0];
 

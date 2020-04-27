@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Ending implements Serializable {
 	
@@ -90,5 +91,17 @@ public class Ending implements Serializable {
 
 	public void setCurrentRoomID(int currentRoomID) {
 		this.currentRoomID = currentRoomID;
+	}
+	
+	public void showEnding(Scanner kb) {
+		
+		System.out.println(endingPrompt);
+		String choice = kb.nextLine();
+		
+		if (choice.equalsIgnoreCase(endingCommand)) {
+			for (String s: endingDescription)
+				System.out.println(s);
+			System.exit(1);
+		}
 	}
 }

@@ -29,15 +29,26 @@ public class Puzzle implements Serializable{
 		this.isSolved = isSolved;
 	}
 	
-	public void solve(Scanner kb) {
+	public void solve(Scanner kb, boolean hintUnlocked) {
 		
 		System.out.println();
 		for (String s: puzzleDescription) {
 			System.out.println(s);
 		}
-		System.out.println("Type \"solve\" when ready to solve the puzzle");
+		System.out.println("Type \"solve\" when ready to solve the puzzle (\"Help\" for a hint or \"Giveup\" to giveup on the puzzle)");
 		String solve = kb.nextLine();
 		
+		if (solve.equalsIgnoreCase("help") && hintUnlocked) {
+			System.out.println(hint);
+		}
+		else if (solve.equalsIgnoreCase("help") && !hintUnlocked) {
+			System.out.println("You do not have the ability to receive hints yet");
+		}
+		else if (solve.equalsIgnoreCase("giveup")) {
+			System.out.println("This is too tough. You have decided to give up");
+			attempts = 0;
+			return;
+		}
 		if (solve.equalsIgnoreCase("solve")) {
 			for (int i = 0; i < 20; i++) {
 				System.out.println();
@@ -71,7 +82,9 @@ public class Puzzle implements Serializable{
 		//if the player runs out of attempts and did not get the correct answer
 		if (attempts == 0 && !isSolved) {
 			System.out.println("Failed to solve");
-			System.out.println("The correct answer is " + answer);
+			System.out.print("The correct answer is:");
+			for(String s: answer)
+				System.out.print(" " + s);
 		}
 	}
 

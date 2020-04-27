@@ -534,7 +534,8 @@ public class Map implements Serializable {
 			}
 			else if(command.equalsIgnoreCase("attempt") && input.equalsIgnoreCase("puzzle") && room.getPuzzle() != null)
 			{
-				room.getPuzzle().solve(in);
+				Room hintRoom = searchRoomByID(3);
+				room.getPuzzle().solve(in, hintRoom.isVisited());
 				play();
 			}
 			else
